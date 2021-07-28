@@ -9,7 +9,7 @@ void treat_unsigned(va_list args, int *counter)
 
     i = 0;
     num = va_arg(args,unsigned int);
-    str_num = ft_atoi_base(num,10);
+    str_num = ft_ull_base(num,10);
     len = ft_strlen(str_num);
     *counter += (int)len;
     while(i < len){

@@ -15,7 +15,7 @@ void treat_dec(va_list args, int *counter)
         is_minus = 1;
         num *= -1;
     }
-    str_num = ft_atoi_base(num,10);
+    str_num = ft_ull_base(num,10);
     if(is_minus)
         str_num = ft_strjoin("-",str_num);
     len = ft_strlen(str_num);

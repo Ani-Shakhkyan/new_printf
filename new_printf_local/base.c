@@ -1,29 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   base.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ashakhky <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/28 16:33:04 by ashakhky          #+#    #+#             */
+/*   Updated: 2021/07/28 16:50:52 by ashakhky         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-char* ft_atoi_base(unsigned long long int number, int base)
+static char	*treat_base(unsigned long long ull_save, int base,
+char *rtn, int count)
 {
-    char *base_rep;
-    int base_len;
-    unsigned long long int num_copy;
-    unsigned int remainder = 0;
-    num_copy = number;
-    base_len = 0;
-    while(number >= 1)
-    {
-        number/= base;
-        base_len++;
-    }
-    base_rep = (char *) malloc(base_len * sizeof(char) + 1);
-    base_rep[base_len] = '\0';
-    base_len--;
-    while(base_len >= 0){
-        remainder = num_copy % base;
-        if(num_copy % base < 10) 
-             base_rep[base_len] = remainder + 48;
-        else
-            base_rep[base_len] = remainder + 55;
-        base_len--;
-        num_copy/=base;
-    }
-    return base_rep;
+	while (ull_save != 0)
+	{
+		if ((ull_save % base) < 10)
+			rtn[count - 1] = (ull_save % base) + 48;
+		else
+			rtn[count - 1] = (ull_save % base) + 55;
+		ull_save /= base;
+		count--;
+	}
+	return (rtn);
+}
+
+char		*ft_ull_base(unsigned long long ull, int base)
+{
+	char				*rtn;
+	unsigned long long	ull_save;
+	int					count;
+
+	rtn = 0;
+	count = 0;
+	ull_save = ull;
+	if (ull == 0)
+		return (ft_strdup("0"));
+	while (ull != 0)
+	{
+		ull /= base;
+		count++;
+	}
+	if (!(rtn = malloc(sizeof(char) * (count + 1))))
+		return (0);
+	rtn[count] = '\0';
+	rtn = treat_base(ull_save, base, rtn, count);
+	return (rtn);
 }

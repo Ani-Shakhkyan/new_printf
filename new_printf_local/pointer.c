@@ -13,7 +13,7 @@ void treat_pointer(va_list args, int *counter)
     adr = va_arg(args,int*);
     str = "0x";
     adress = (long long int)adr;
-    adddress = ft_atoi_base(adress,16);
+    adddress = ft_ull_base(adress,16);
     adddress = convert_to_lower(adddress);
     adddress = ft_strjoin(str,adddress);// need to free adddress!!!!!!!!!!!!!!!!!!
     end = ft_strlen(adddress);

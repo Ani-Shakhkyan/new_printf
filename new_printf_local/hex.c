@@ -9,7 +9,7 @@ void treat_hex_lowercase(va_list args, int *counter)
     
     i = 0;
     num = va_arg(args,int);
-    hex = ft_atoi_base(num,16);
+    hex = ft_ull_base(num,16);
     hex = convert_to_lower(hex);
     len = ft_strlen(hex);
     *counter += (int)len;
@@ -19,15 +19,3 @@ void treat_hex_lowercase(va_list args, int *counter)
     }
     free(hex);
 }
-// int variadic(char *str,...)
-// {
-//     va_list args;
-// 	va_start(args, str);
-//     treat_hex_lowercase(args);
-//     return 0;
-// }
-// int main()
-// {
-//     variadic("hello",200);
-//     return(0);
-// }

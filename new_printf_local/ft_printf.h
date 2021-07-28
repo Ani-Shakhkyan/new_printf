@@ -6,13 +6,14 @@
 #include <stdlib.h>
 #include "libft/libft.h"
 
-
-char* ft_atoi_base(unsigned long long int number, int base);
-char* convert_to_lower(char *str);
+char *ft_ull_base(unsigned long long ull, int base);
+char *convert_to_lower(char *str);
 void treat_pointer(va_list args, int *counter);
 void treat_hex_lowercase(va_list args, int *counter);
 void treat_hex_uppercase(va_list args, int *counter);
 void treat_dec(va_list args, int *counter);
 void treat_unsigned(va_list args, int *counter);
+void treat_string(va_list args, int *counter);
+void treat_char(va_list args, int *counter);
 
 #endif
